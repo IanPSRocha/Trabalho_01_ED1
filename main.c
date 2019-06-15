@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "fila_int.h"
 
 void acessaMenu();
 void menu();
 void opcao1();
 void opcao2();
 void opcao3();
-void opcao4();
 
 int main(){
     cria_fila_int();
@@ -17,7 +17,7 @@ return 0;
 
 void menu(){
     printf("=======================================================\n");
-    printf(">>>>>>>>>>>>>>>>>>> EXERCÍCIO 02 <<<<<<<<<<<<<<<<<<<<<<\n");
+    printf(">>>>>>>>>>>>>>>>>>>> TRABALHO 01 <<<<<<<<<<<<<<<<<<<<<<\n");
     printf("=======================================================\n");
     printf("\t Por favor selecione a opção desejada:\n");
     printf(" (1) Inserir elementos na fila\n");
@@ -70,7 +70,16 @@ void opcao1(){
             printf("Elemento (%d): ", i);
             scanf("%d", &elemento);
         }
-        enfileira_int(elemento);
+        if(fila_int_cheia()){
+            system("clear");
+            printf("Impossível inserir mais elementos, a fila está cheia!!\n\n\n");
+            break;
+        }
+        else{
+            if(enfileira_int(elemento)){
+                printf("Elemento %d inserido!\n", elemento);
+            }
+        }
     }
     system("clear");
 }
