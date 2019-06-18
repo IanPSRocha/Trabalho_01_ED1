@@ -20,11 +20,6 @@ int enfileira_circular(int y){
     return ret;
 }
 
-int desenfileira_int(){
-    fila_int[p] = 0;
-return fila_int[p++];
-}
-
 //falta a fila vazia, cheia e desinfileira
 
 void print_fila(){
