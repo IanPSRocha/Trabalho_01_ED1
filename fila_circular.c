@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "fila_int.h"
+#include "fila_circular.h"
 
 #define N 10
 
