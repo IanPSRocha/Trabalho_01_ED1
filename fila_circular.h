@@ -7,5 +7,5 @@ int desenfileira_circular();
 int fila_circular_vazia();
 int fila_circular_cheia();
 void print_fila();
-
+int redimensiona()
 #endif
