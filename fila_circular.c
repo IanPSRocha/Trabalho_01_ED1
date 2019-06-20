@@ -6,11 +6,11 @@
 static int *fila;
 static int N, p, u;
 
-void cria_fila_circular(){
+void cria_fila(){
     fila = malloc( N * sizeof(int) );p = 0; u = 0;
 }
 
-int enfileira_circular(int y){
+int enfileira(int y){
     int ret = 1;
     if ( fila_cheia() ) { ret = redimensiona();}
     if ( ret ) {

@@ -6,28 +6,28 @@
 static int fila_int[N];
 static int p, u;
 
-void cria_fila_int(){
+void cria_fila(){
     p = 0; u = 0;
 }
 
-int enfileira_int(int y){
+int enfileira(int y){
     fila_int[u++] = y;
 return 1;
 }
 
-int desenfileira_int(){
+int desenfileira(){
     fila_int[p] = 0;
 return fila_int[p++];
 }
 
-int fila_int_vazia(){
+int fila_vazia(){
     if( p == u ) {
-    cria_fila_int();
+    cria_fila();
     }
 return p == u;
 }
 
-int fila_int_cheia(){
+int fila_cheia(){
 return u == N;
 }
 
