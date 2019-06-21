@@ -9,8 +9,8 @@ void opcao2();
 void opcao3();
 
 int main(){
-    cria_fila_int();
-    fila_int_vazia();
+    cria_fila();
+    fila_vazia();
     acessaMenu();
 return 0;
 }
@@ -70,13 +70,13 @@ void opcao1(){
             printf("Elemento (%d): ", i);
             scanf("%d", &elemento);
         }
-        if(fila_int_cheia()){
+        if(fila_cheia()){
             system("clear");
             printf("Impossível inserir mais elementos, a fila está cheia!!\n\n\n");
             break;
         }
         else{
-            if(enfileira_int(elemento)){
+            if(enfileira(elemento)){
                 printf("Elemento %d inserido!\n", elemento);
             }
         }
@@ -90,17 +90,17 @@ void opcao2(){
     printf("Digite quantos elementos você deseja remover:\n");
     scanf("%d", &quant);
     system("clear");
-    if(fila_int_vazia()){
+    if(fila_vazia()){
         printf("A fila está vazia!!\n");
     }
     else{
         for(int i = 0; i < quant; i++){
-            if(fila_int_vazia()){
+            if(fila_vazia()){
                 printf("Impossível remover mais elementos, a fila está vazia!!\n");
                 break;
             }
             else{
-                elemento = desenfileira_int();
+                elemento = desenfileira();
                 printf("Elemento removido: %d\n", elemento);
             }
         }
