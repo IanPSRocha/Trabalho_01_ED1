@@ -7,6 +7,8 @@ int desenfileira();
 int fila_vazia();
 int fila_cheia();
 void print_fila();
-int redimensiona()
+int redimensiona();
+void liberafila();
+int tam_fila();
 
 #endif
