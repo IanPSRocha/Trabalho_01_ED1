@@ -44,7 +44,17 @@ int tam_fila(){
     }
     return total;
 }
-//falta a desinfileira
+
+int desenfileira(){
+    if(!fila_vazia()){
+        fila[p++];
+        if(p == N){
+            p = 0;
+            return 1;
+        }
+    return 0;
+    }
+}
 
 void print_fila(){
     printf("-------------------------------------------------------------\n|");

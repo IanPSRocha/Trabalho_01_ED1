@@ -31,6 +31,16 @@ int fila_cheia(){
 return u == N;
 }
 
+int tam_fila(){
+    int total = 0;
+    for(int i = 0; i < N; i++){
+        if(fila_int[i] != 0){
+            total++;
+        }
+    }
+    return total;
+}
+
 void print_fila(){
     printf("-------------------------------------------------------------\n|");
     for(int i = 0; i < N; i++){

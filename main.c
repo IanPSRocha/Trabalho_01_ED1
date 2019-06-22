@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fila_int.h"
+#include "fila_circular.h"
 
 void acessaMenu();
 void menu();
@@ -10,7 +10,6 @@ void opcao3();
 
 int main(){
     cria_fila();
-    fila_vazia();
     acessaMenu();
 return 0;
 }

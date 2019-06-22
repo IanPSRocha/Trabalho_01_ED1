@@ -7,5 +7,6 @@ int desenfileira();
 int fila_vazia();
 int fila_cheia();
 void print_fila();
+int tam_fila();
 
 #endif
