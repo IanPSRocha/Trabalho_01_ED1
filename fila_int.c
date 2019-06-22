@@ -11,11 +11,15 @@ void cria_fila(){
 }
 
 int enfileira(int y){
+    if(fila_cheia()){
+        return 0;
+    }
     fila_int[u++] = y;
 return 1;
 }
 
-int desenfileira(){
+int desenfileira(int *y){
+    *y = fila_int[p];
     fila_int[p] = 0;
 return fila_int[p++];
 }
@@ -40,6 +44,8 @@ int tam_fila(){
     }
     return total;
 }
+
+void libera(){}
 
 void print_fila(){
     printf("-------------------------------------------------------------\n|");

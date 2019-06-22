@@ -8,13 +8,13 @@ struct elemFila {
 typedef struct elemFila ElemFila;
 
 ElemFila *aloca();
-ElemFila *retira(ElemFila *Fila);
 void cria_fila();
-int enfileira(ElemFila *Fila);
-int desenfileira(ElemFila *Fila);
-void libera(ElemFila *Fila);
+int enfileira(int y);
+int desenfileira(int *y);
+void libera();
 int fila_vazia();
 int fila_cheia();
 void print_fila();
+int tam_fila();
 
 #endif

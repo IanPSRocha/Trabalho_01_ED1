@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fila_circular.h"
+#include "fila_encadeada.h"
 
 void acessaMenu();
 void menu();
@@ -46,6 +46,7 @@ void acessaMenu(){
                 menu();
                 break;
             case '4':
+                libera();
                 system("clear");
                 break;
             default:
@@ -64,20 +65,17 @@ void opcao1(){
     for(int i = 1; i <= quant; i++){
         printf("Elemento (%d): ", i);
         scanf("%d", &elemento);
-        while(elemento > 999 || elemento < 0){
+        while(elemento > 999 || elemento < 1){
             printf("Elemento inválido, digite novamente:\n");
             printf("Elemento (%d): ", i);
             scanf("%d", &elemento);
         }
-        if(fila_cheia()){
-            system("clear");
-            printf("Impossível inserir mais elementos, a fila está cheia!!\n\n\n");
-            break;
+        if(enfileira(elemento)){
+            printf("Elemento %d inserido!\n", elemento);
         }
         else{
-            if(enfileira(elemento)){
-                printf("Elemento %d inserido!\n", elemento);
-            }
+            printf("Impossível adicionar mais elementos, a fila está cheia!!\n");
+            break;
         }
     }
     system("clear");
@@ -99,7 +97,7 @@ void opcao2(){
                 break;
             }
             else{
-                elemento = desenfileira();
+                desenfileira(&elemento);
                 printf("Elemento removido: %d\n", elemento);
             }
         }

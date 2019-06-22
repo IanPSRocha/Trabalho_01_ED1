@@ -3,12 +3,12 @@
 
 void cria_fila();
 int enfileira(int y);
-int desenfileira();
+int desenfileira(int *y);
 int fila_vazia();
 int fila_cheia();
 void print_fila();
 int redimensiona();
-void liberafila();
+void libera();
 int tam_fila();
 
 #endif

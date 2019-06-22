@@ -3,95 +3,68 @@
 #include "fila_encadeada.h"
 
 static int tam;
-static int lim = 10;
+static ElemFila *Fila;
 
-void criar_fila(ElemFila * Fila){
-    Fila->prox = NULL;
+void cria_fila(){
+    Fila = malloc(sizeof (ElemFila));
+    Fila->prox = Fila;
     tam = 0;
 }
 
 int fila_cheia(){
-    if(tam == lim){
-        return 1;
-    }
     return 0;
 }
 
 int fila_vazia(){
-    if(tam == 0){
-        return 1;
-    }
-    return 0;
+    return Fila->prox == Fila;
 }
 
-ElemFila *aloca(){
-    ElemFila *novo = (ElemFila *) malloc (sizeof (ElemFila));
-    if(!novo){
-        printf("Erro ao alocar!!\n");
-        exit(1);
-    }
-    else{
-        printf("Novo Elemento: ");
-        scanf("%d", &novo->dado);
-    }
-}
 
-int enfileira(ElemFila *Fila){
-    ElemFila *novo = aloca();
-    novo->prox = NULL;
-
-    if(fila_vazia()){
-        Fila->prox = novo;
+int enfileira(int y){
+    ElemFila *novo = malloc(sizeof (ElemFila));
+    if(novo == NULL){
+        return -1;
     }
-    else{
-        ElemFila *aux = Fila->prox;
-        while(aux->prox != NULL){
-            aux = aux->prox;
-        }
-        aux->prox = novo;
-    }
+    novo->prox = Fila->prox;
+    Fila->prox = novo;
+    Fila->dado = y;
+    Fila=novo;
     tam++;
     return 1;
 }
 
-ElemFila *retira(ElemFila *Fila){
-    if(Fila->prox == NULL){
-        printf("A fila já está vazia!!\n");
-        return NULL;
+int desenfileira(int *y){
+    if(fila_vazia()){
+        return 0;
     }
-    else{
-        ElemFila *aux = Fila->prox;
-        Fila->prox = aux->prox;
-        tam--;
-        return aux;
-    }
+    ElemFila *aux = Fila->prox;
+    *y = aux->dado;
+    Fila->prox = aux->prox;
+    free(aux);
+    tam--;
+    return 1;
 }
 
-int desenfileira(ElemFila *Fila){
-    ElemFila *aux = retira(Fila);
-    if(aux != NULL){
-        libera(aux);
-        return 1;
-    }
-    return 0;
-}
-
-void libera(ElemFila *Fila){
+void libera(){
     if(!fila_vazia()){
-        ElemFila *aux, *atual;
-        atual = Fila->prox;
-        while(atual != NULL){
-            aux = atual->prox;
-            free(atual);
-            atual = aux;
+        ElemFila *lixo, *prox;
+        prox = Fila->prox;
+        while(prox != Fila){
+            lixo = prox;
+            prox = lixo->prox;
+            free(lixo);
         }
     }
 }
 
-void print_fila(ElemFila *Fila){
+int tam_fila(){
+    return tam;
+}
+
+void print_fila(){
     ElemFila *aux = Fila;
     printf("-------------------------------------------------------------\n|");
-    for(aux; aux->prox != NULL; aux->prox){
+    for(aux; aux->prox != Fila; aux = aux->prox){
         if(aux->dado == 0){
             printf(" xxx |");
         }
@@ -104,7 +77,7 @@ void print_fila(ElemFila *Fila){
         printf("p  u\n");
     }
     else{
-        for(aux; aux->prox != NULL; aux->prox){
+        for(aux; aux->prox != Fila; aux = aux->prox){
             if(aux->dado != 0){
                 printf(" p ");
                 break;
@@ -113,7 +86,7 @@ void print_fila(ElemFila *Fila){
                 printf("    ");
             }
         }
-        for(aux; aux->prox != NULL; aux->prox){
+        for(aux; aux->prox != Fila; aux = aux->prox){
             if(aux->dado != 0 && aux->prox->dado == 0){
                 printf("  u  \n");
                 break;

@@ -6,7 +6,7 @@ static int *fila;
 static int N, p, u;
 
 void cria_fila(){
-    N = 10;
+    N = 5;
     fila = malloc( N * sizeof(int));
     p = 0; u = 0;
 }
@@ -25,12 +25,12 @@ int enfileira(int y){
     return ret;
 }
 
-void liberafila(){
+void libera(){
     free(fila);
 }
 
 int fila_cheia(){
-    return (u % 1) % N == p;
+    return (u + 1) % N == p;
 }
 
 int fila_vazia(){
@@ -45,13 +45,14 @@ int tam_fila(){
     return total;
 }
 
-int desenfileira(){
+int desenfileira(int *y){
     if(!fila_vazia()){
-        fila[p++];
+        *y = fila[p++];
+        //fila[p] = 0;
         if(p == N){
             p = 0;
-            return 1;
         }
+        return 1;
     return 0;
     }
 }
