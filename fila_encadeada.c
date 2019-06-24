@@ -7,6 +7,7 @@ static ElemFila *Fila;
 
 void cria_fila(){
     Fila = malloc(sizeof (ElemFila));
+    Fila->dado = 0;
     Fila->prox = Fila;
     tam = 0;
 }
